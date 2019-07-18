@@ -1,3 +1,0 @@
-type Query {
-  goodbye(name: String!): String!
-}
