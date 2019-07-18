@@ -1,0 +1,17 @@
+import { prisma } from '../../../../generated/prisma-client';
+
+export default {
+  Mutation: {
+    createUser: async (_, args) => {
+      const { userName, email, firstName = '', lastName = '', bio = '' } = args;
+      const user = prisma.createUser({
+        userName,
+        email,
+        firstName,
+        lastName,
+        bio
+      });
+      return user;
+    }
+  }
+};
