@@ -6,12 +6,12 @@ type User {
   firstName: String @default(value: "first name")
   posts: [Post!]!
   likes: [Like!]!
-  bio: String!
+  bio: String
   comment: [Comment!]!
   following: [User!]! @relation(name: "FollowRelation")
   followers: [User!]! @relation(name: "FollowRelation")
   chat: [Chat!]!
-  loginSecret: String!
+  loginSecret: String
 }
 type Post {
   id: ID! @id
