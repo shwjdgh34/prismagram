@@ -1,10 +1,10 @@
 import { prisma } from '../../../../generated/prisma-client';
-import { isAutheticated } from '../../../middlewares';
+import { isAuthenticated } from '../../../middlewares';
 
 export default {
   Mutation: {
     follow: async (_, args, { request }) => {
-      isAutheticated(request);
+      isAuthenticated(request);
       const { targetUserId } = args;
       const { user } = request;
       try {
