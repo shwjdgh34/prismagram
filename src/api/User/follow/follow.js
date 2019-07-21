@@ -8,7 +8,6 @@ export default {
       const { targetUserId } = args;
       const { user } = request;
       try {
-        /*
         await prisma.updateUser({
           where: { id: user.id },
           data: {
@@ -19,9 +18,9 @@ export default {
             }
           }
         });
-        */
-        // 아래처럼 followers에 대한 정보를 update하지 않아도 자동으로 된다.. connect의 힘인가? connect를 제대로 이해하지 못하고 있는 것 같다.
 
+        // 아래처럼 followers에 대한 정보를 update하지 않아도 자동으로 된다.. connect의 힘인가? connect를 제대로 이해하지 못하고 있는 것 같다.
+        /*
         await prisma.updateUser({
           where: { id: targetUserId },
           data: {
@@ -32,7 +31,7 @@ export default {
             }
           }
         });
-
+*/
         return true;
       } catch {
         return false;
