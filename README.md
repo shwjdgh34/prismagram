@@ -11,9 +11,11 @@ instagram clone with express prisma and react native
 - [o] Comment on a photo
 - [o] Search user
 - [o] Search post by location
-- [ ] Follow
-- [ ] Unfollow User
+- [o] Follow
+- [o] Unfollow User
 - [ ] Edit my profile
+- [ ] See User profile
+- [ ] See the full photo
 - [ ] Upload a photo
 - [ ] Edit the photo (Delete)
 - [ ] See the feed
