@@ -53,3 +53,7 @@ type Message {
   to: User!
   chat: Chat!
 }
+type UserProfile {
+  user: User!
+  posts: [Post!]!
+}
