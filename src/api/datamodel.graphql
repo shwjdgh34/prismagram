@@ -9,7 +9,8 @@ type User {
   likes: [Like!]!
   bio: String
   comment: [Comment!]!
-  amIFollowing: Boolean!
+  isFollowing: Boolean!
+  isSelf: Boolean!
   following: [User!]!
   followers: [User!]!
   chat: [Chat!]!
@@ -23,6 +24,7 @@ type Post {
   user: User!
   likes: [Like!]!
   comment: [Comment!]!
+  isLiked: Boolean!
 }
 type Like {
   id: ID!
