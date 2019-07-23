@@ -13,18 +13,19 @@ type User {
   isSelf: Boolean!
   following: [User!]!
   followers: [User!]!
-  chat: [Chat!]!
+  chats: [Chat!]!
   loginSecret: String
 }
 type Post {
   id: ID!
   files: [File!]!
-  location: String!
+  location: String
   caption: String!
   user: User!
   likes: [Like!]!
   comment: [Comment!]!
   isLiked: Boolean!
+  likeCount: Int!
 }
 type Like {
   id: ID!
