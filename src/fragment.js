@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export const USER_FRAGMENT = `
     id
     userName
+    avatar
 `;
 export const COMMENT_FRAGMENT = `
     id
@@ -30,6 +31,43 @@ export const FULLPOST_FRAGMENT = gql`
     }
     comments {
       ${COMMENT_FRAGMENT}
+    }
+  }
+`;
+
+export const USERPROFILE_FRAGMENT = gql`
+  fragment UserProfilePart on User {
+    id
+    userName
+    email
+    avatar
+    lastName
+    firstName
+    bio
+    posts {
+      id
+      caption
+    }
+  }
+`;
+
+export const MESSAGE_FRAGMENT = gql`
+  fragment MessagePart on Message {
+    text
+    from {
+      ${USER_FRAGMENT}
+    }
+    to {
+      ${USER_FRAGMENT}
+    }
+  }
+`;
+
+export const CHAT_FRAGMENT = gql`
+  fragment ChatPart on Chat {
+    id
+    participants{
+      ${USER_FRAGMENT}
     }
   }
 `;

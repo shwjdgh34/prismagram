@@ -1,0 +1,7 @@
+type ChatResponse {
+  chat: Chat!
+  messages: [Message!]!
+}
+type Query {
+  seeChat(chatId: ID): ChatResponse!
+}

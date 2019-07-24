@@ -1,15 +1,11 @@
 import { prisma } from '../../../../generated/prisma-client';
+import { USERPROFILE_FRAGMENT } from '../../../fragment';
 
 export default {
   Query: {
-    seeUser: async (_, args) => {
+    seeUser: (_, args) => {
       const { id } = args;
-      const user = await prisma.user({ id });
-      const posts = await prisma.user({ id }).posts();
-      return {
-        user,
-        posts
-      };
+      return prisma.user({ id }).$fragment(USERPROFILE_FRAGMENT);
     }
   }
 };
