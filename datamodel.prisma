@@ -12,6 +12,8 @@ type User {
   followers: [User!]! @relation(name: "FollowRelation")
   chats: [Chat!]! @relation(name: "ChatsByUser")
   loginSecret: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 type Post {
   id: ID! @id
@@ -21,29 +23,39 @@ type Post {
   user: User! @relation(name: "PostByUser")
   likes: [Like!]! @relation(name: "LikeByPost", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentByPost", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 type Like {
   id: ID! @id
   user: User! @relation(name: "LikesByUser")
   post: Post! @relation(name: "LikeByPost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 type Comment {
   id: ID! @id
   text: String!
   user: User! @relation(name: "CommentsByUser")
   post: Post! @relation(name: "CommentByPost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type File {
   id: ID! @id
   url: String!
   post: Post! @relation(name: "FilesByPost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Chat {
   id: ID! @id
   participants: [User] @relation(name: "ChatsByUser")
   messages: [Message!]! @relation(name: "MessageByChat", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Message {
@@ -52,4 +64,6 @@ type Message {
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
   chat: Chat! @relation(name: "MessageByChat")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

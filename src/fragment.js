@@ -28,7 +28,7 @@ export const FULLPOST_FRAGMENT = gql`
     user {
       ${USER_FRAGMENT}
     }
-    comment {
+    comments {
       ${COMMENT_FRAGMENT}
     }
   }

@@ -11,7 +11,7 @@ export default {
         await prisma.updateUser({
           where: { id: user.id },
           data: {
-            following: {
+            followings: {
               connect: {
                 id: targetUserId
               }
