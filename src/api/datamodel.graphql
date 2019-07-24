@@ -8,10 +8,10 @@ type User {
   posts: [Post!]!
   likes: [Like!]!
   bio: String
-  comment: [Comment!]!
+  comments: [Comment!]!
   isFollowing: Boolean!
   isSelf: Boolean!
-  following: [User!]!
+  followings: [User!]!
   followers: [User!]!
   chats: [Chat!]!
   loginSecret: String
@@ -23,7 +23,7 @@ type Post {
   caption: String!
   user: User!
   likes: [Like!]!
-  comment: [Comment!]!
+  comments: [Comment!]!
   isLiked: Boolean!
   likeCount: Int!
 }
@@ -49,7 +49,7 @@ type File {
 type Chat {
   id: ID!
   participants: [User!]!
-  message: [Message!]!
+  messages: [Message!]!
 }
 
 type Message {

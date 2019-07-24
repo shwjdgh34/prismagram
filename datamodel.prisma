@@ -4,46 +4,46 @@ type User {
   email: String! @unique
   lastName: String @default(value: "last name")
   firstName: String @default(value: "first name")
-  posts: [Post!]!
-  likes: [Like!]!
+  posts: [Post!]! @relation(name: "PostByUser", onDelete: CASCADE)
+  likes: [Like!]! @relation(name: "LikesByUser", onDelete: CASCADE)
   bio: String
-  comment: [Comment!]!
-  following: [User!]! @relation(name: "FollowRelation")
+  comments: [Comment!]! @relation(name: "CommentsByUser", onDelete: CASCADE)
+  followings: [User!]! @relation(name: "FollowRelation")
   followers: [User!]! @relation(name: "FollowRelation")
-  chats: [Chat!]!
+  chats: [Chat!]! @relation(name: "ChatsByUser")
   loginSecret: String
 }
 type Post {
   id: ID! @id
-  files: [File!]!
+  files: [File!]! @relation(name: "FilesByPost", onDelete: CASCADE)
   location: String
   caption: String!
-  user: User!
-  likes: [Like!]!
-  comment: [Comment!]!
+  user: User! @relation(name: "PostByUser")
+  likes: [Like!]! @relation(name: "LikeByPost", onDelete: CASCADE)
+  comments: [Comment!]! @relation(name: "CommentByPost", onDelete: CASCADE)
 }
 type Like {
   id: ID! @id
-  user: User!
-  post: Post!
+  user: User! @relation(name: "LikesByUser")
+  post: Post! @relation(name: "LikeByPost")
 }
 type Comment {
   id: ID! @id
   text: String!
-  user: User!
-  post: Post!
+  user: User! @relation(name: "CommentsByUser")
+  post: Post! @relation(name: "CommentByPost")
 }
 
 type File {
   id: ID! @id
   url: String!
-  post: Post!
+  post: Post! @relation(name: "FilesByPost")
 }
 
 type Chat {
   id: ID! @id
-  participants: [User!]!
-  message: [Message!]!
+  participants: [User] @relation(name: "ChatsByUser")
+  messages: [Message!]! @relation(name: "MessageByChat", onDelete: CASCADE)
 }
 
 type Message {
@@ -51,5 +51,5 @@ type Message {
   text: String!
   from: User! @relation(name: "From")
   to: User! @relation(name: "To")
-  chat: Chat!
+  chat: Chat! @relation(name: "MessageByChat")
 }
