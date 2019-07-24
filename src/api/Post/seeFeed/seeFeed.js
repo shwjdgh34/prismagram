@@ -6,8 +6,6 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const followings = await prisma.user({ id: user.id }).followings();
-      console.log(followings);
-      console.log(followings.map(user => user.id));
 
       return prisma.posts({
         where: {

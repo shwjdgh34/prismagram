@@ -52,7 +52,7 @@ type File {
 
 type Chat {
   id: ID! @id
-  participants: [User] @relation(name: "ChatsByUser")
+  participants: [User!]! @relation(name: "ChatsByUser")
   messages: [Message!]! @relation(name: "MessageByChat", onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

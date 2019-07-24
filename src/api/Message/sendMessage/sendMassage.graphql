@@ -1,0 +1,3 @@
+type Mutation {
+  sendMessage(toId: ID, text: String!, chatId: ID): Message
+}

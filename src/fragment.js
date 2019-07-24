@@ -33,3 +33,12 @@ export const FULLPOST_FRAGMENT = gql`
     }
   }
 `;
+
+export const CHAT_FRAGMENT = gql`
+  fragment ChatPart on Chat {
+    id
+    participants {
+      id
+    }
+  }
+`;
