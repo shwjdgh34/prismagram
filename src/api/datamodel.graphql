@@ -13,6 +13,7 @@ type User {
   isFollowing: Boolean!
   isSelf: Boolean!
   followings: [User!]!
+  followingsCounts
   followers: [User!]!
   chats: [Chat!]!
   loginSecret: String
