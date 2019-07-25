@@ -1,5 +1,4 @@
 import { prisma } from '../../../../generated/prisma-client';
-import { MESSAGE_FRAGMENT, CHAT_FRAGMENT } from '../../../fragment';
 
 export default {
   Query: {
@@ -11,18 +10,15 @@ export default {
         AND: [{ id: chatId }, { participants_some: { id: user.id } }]
       });
       if (existChat) {
-        console.log('in?');
-        const chat = await prisma.chat({ id: chatId }).$fragment(CHAT_FRAGMENT);
-        const messages = await prisma
-          .messages({
-            where: {
-              chat: {
-                id: chatId
-              }
-            },
-            orderBy: 'createdAt_ASC'
-          })
-          .$fragment(MESSAGE_FRAGMENT);
+        const chat = await prisma.chat({ id: chatId });
+        const messages = await prisma.messages({
+          where: {
+            chat: {
+              id: chatId
+            }
+          },
+          orderBy: 'createdAt_ASC'
+        });
         return { chat, messages };
       } else {
         throw Error('there is no chat you can enter');

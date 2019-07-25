@@ -13,7 +13,6 @@ export default {
         lastName = '',
         bio = ''
       } = args;
-      //console.log(await prisma.user({ email: 'nonono@gmail.com' })); // await를 안쓰면 안된다 왜그러지?? async await에 대해서 제대로 공부해보기
 
       const user = await prisma.createUser({
         userName,

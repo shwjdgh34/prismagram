@@ -31,7 +31,6 @@ export default {
         }
 
         const getTo = chat.filter(participant => participant.id !== user.id)[0];
-        console.log(getTo);
         newMessage = await prisma.createMessage({
           text,
           from: {

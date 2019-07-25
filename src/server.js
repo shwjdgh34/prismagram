@@ -14,7 +14,8 @@ import { isAuthenticated } from './middlewares';
 const PORT = process.env.PORT || 4000;
 const server = new GraphQLServer({
   schema,
-  context: ({ request }) => ({ request, isAuthenticated })
+  context: ({ request }) => ({ request, isAuthenticated }),
+  tracing: true
 }); //context는 resolver 사이에서 정보를 공유할 때 사용한다, prisma를 resolver에서 import하지 않고 server.js에서 import 했다.
 server.express.use(logger('dev'));
 server.express.use(authenticateJwt); // 서버에 전달되는 모든 요청은 이 authenticateJwt함수를 통과한다.

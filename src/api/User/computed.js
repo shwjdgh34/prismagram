@@ -2,10 +2,10 @@ import { prisma } from '../../../generated/prisma-client';
 
 export default {
   User: {
-    fullName: async parent => {
+    fullName: parent => {
       return `${parent.lastName} ${parent.firstName}`;
     },
-    isFollowing: async (parent, _, { request, isAuthenticated }) => {
+    isFollowing: (parent, _, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
       const { id: parentId } = parent;
@@ -13,11 +13,12 @@ export default {
         AND: [{ id: user.id }, { following_some: { id: parentId } }]
       });
     },
-    isSelf: async (parent, _, { request, isAuthenticated }) => {
+    isSelf: (parent, _, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
       const { id: parentId } = parent;
       return user.id === parentId;
-    }
+    },
+    posts: parent => prisma.user({ id: parent.id }).post()
   }
 };
